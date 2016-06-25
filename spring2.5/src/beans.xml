@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 
+	<bean id="personService2" class="com.sunyahui.service.impl.PersonServiceBeanFactory"
+		factory-method="createPersonServiceBean"></bean>
+	<bean id="personServiceFactory" class="com.sunyahui.service.impl.PersonServiceBeanFactory"></bean>
+	<bean id="personService3" factory-bean="personServiceFactory"
+		factory-method="createPersonServiceBean1"></bean>
+	 -->
+	<bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean"
+	lazy-init="default"  init-method="init"  destroy-method="destroy"
+	></bean>
+</beans>

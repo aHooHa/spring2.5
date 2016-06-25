@@ -1,0 +1,42 @@
+spring的好处：
+1、降低组件之间的耦合度，实现软件各层之间的解耦。
+2、可以使用容器提供的众多服务，如，事务管理服务、信息服务。
+3、容器提供单例模式支持
+4、容器提供了AOP技术，利用它很容易实现如权限拦截、运行期监控
+5、容器提供众多辅助作类，使用这些类能够加快应用开发
+6、Spring对于主流的应用框架提供了集成支持。
+
+ 
+dist\spring.jar
+lib\jakarta-commons\commons-logging.jar
+
+lib\aspectj/aspectjweaver.jar 和 aspectjrt.jar
+lib/cglib/cglib-nodep-2.1_3.jar
+
+实例化Spring
+ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"beans.xml"})
+
+beans.xml
+  <bean> 的id属性的值不能有特殊字符，而name属性的值可以有特殊字符。
+
+三种实例化bean的方式
+
+1、使用类构造实例化  (默认情况下是单实例。)
+  <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean"></bean>
+2、使用静态工厂方法实例化
+  <bean id="personService2" class="com.sunyahui.service.impl.PersonServiceBeanFactory"
+		factory-method="createPersonServiceBean"></bean>
+3、使用实例工厂方法实例化
+  <bean id="personServiceFactory" class="com.sunyahui.service.impl.PersonServiceBeanFactory"></bean>
+	<bean id="personService3" factory-bean="personServiceFactory"
+		factory-method="createPersonServiceBean1"></bean>
+
+Bean的作用域
+ 通过<bean  .....scope="选择下面其中一个属性">
+   .singleton （默认，不会创建新对象，bean的实例化在创建容器的时候就开始实例化。）
+   .prototype (每次从容器获取bean都是新的对象，如果设置prototype，bean的实例化是在调用getbean（）之后实例化。)
+   .request
+   .session
+   .global session
+
+
