@@ -1,6 +1,10 @@
 package com.sunyahui.service;
 
-public interface PersonService {
+import java.util.Properties;
+import java.util.Set;
 
+public interface PersonService {
+	public Set<String> getSet() ;
 	public void save();
+	public Properties getProperties();
 }

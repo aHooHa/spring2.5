@@ -4,13 +4,53 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 	<!-- 
+	      三种bean实例化方法配置：
 	<bean id="personService2" class="com.sunyahui.service.impl.PersonServiceBeanFactory"
 		factory-method="createPersonServiceBean"></bean>
+		
+	
 	<bean id="personServiceFactory" class="com.sunyahui.service.impl.PersonServiceBeanFactory"></bean>
+	
 	<bean id="personService3" factory-bean="personServiceFactory"
 		factory-method="createPersonServiceBean1"></bean>
-	 -->
+	 
+	 lazy-init 延迟加载，默认是false，true是启动延迟加载。
+	 init-method 初始化方法 
+	 destroy-method 销毁bean
 	<bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean"
 	lazy-init="default"  init-method="init"  destroy-method="destroy"
 	></bean>
+	 -->
+	 <!--  注入对象
+	 方式一：
+	 <bean id="personDao" class="com.sunyahui.dao.impl.PersonDaoBean"></bean>
+	 <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean">
+	 	<property name="personDaoBean" ref="personDao"></property>
+	 </bean>
+	 
+	 方式二：
+	 <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean">
+	 	<property name="personDaoBean" >
+	 	  <bean class="com.sunyahui.dao.impl.PersonDaoBean"/>
+	 	</property>
+	 	给基本变量赋值  
+	 	<property name="name" value="bob"></property>
+	 </bean>
+	  -->
+	   <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean">
+			<property name="set">
+			<set>
+				<value>第一个</value>
+				<value>第二个</value>
+				<value>第三个</value>
+			</set>
+			</property>	  
+			<property name="properties">
+				<props>
+					<prop key="key1">value1</prop>
+					<prop key="key2">value2</prop>
+					<prop key="key3">value3</prop>
+				</props>
+			</property> 
+	   </bean>
 </beans>

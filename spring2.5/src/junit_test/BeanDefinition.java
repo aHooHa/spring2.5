@@ -1,9 +1,12 @@
 package junit_test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BeanDefinition {
 	private String id;
 	private String classname;
-	
+	private List<ProportyDefinition> proportys = new ArrayList<>();
 	
 	public BeanDefinition() {
 		super();
@@ -34,6 +37,16 @@ public class BeanDefinition {
 
 	public void setClassname(String classname) {
 		this.classname = classname;
+	}
+
+
+	public List<ProportyDefinition> getProportys() {
+		return proportys;
+	}
+
+
+	public void setProportys(List<ProportyDefinition> proportys) {
+		this.proportys = proportys;
 	}
 	
 }
