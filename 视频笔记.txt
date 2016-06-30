@@ -33,10 +33,44 @@ beans.xml
 
 Bean的作用域
  通过<bean  .....scope="选择下面其中一个属性">
-   .singleton （默认，不会创建新对象，bean的实例化在创建容器的时候就开始实例化。）
+   .singleton （默认，不会创建新对象，默认请况bean的实例化在创建容器的时候就开始实例化。有一种方法延迟实例化，lazy_init="true"）
    .prototype (每次从容器获取bean都是新的对象，如果设置prototype，bean的实例化是在调用getbean（）之后实例化。)
    .request
    .session
    .global session
 
+注入其他bean：
+  方式一：
+     《其他对象》
+     <bean id="personDao" class="com.sunyahui.dao.impl.PersonDaoBean"></bean>
+	
+      <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean">
+	 	<property name="personDaoBean" ref="personDao"></property>
+	 </bean>
+  方式二：（使用内部bean，但该bean不能被其他bean使用）
+      <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean">
+	 	<property name="personDaoBean" >
+	 	  <bean class="com.sunyahui.dao.impl.PersonDaoBean"/>
+	 	</property>
+	 </bean>
 
+注入Set集合
+    <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean">
+			<property name="set">
+			<set>
+				<value>第一个</value>
+				<value>第二个</value>
+				<value>第三个</value>
+			</set>
+			</property>	   
+	   </bean>
+ 注入List集合
+    <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean">
+			<property name="list">
+			<list>
+				<value>第一个</value>
+				<value>第二个</value>
+				<value>第三个</value>
+			</list>
+			</property>	   
+	   </bean>

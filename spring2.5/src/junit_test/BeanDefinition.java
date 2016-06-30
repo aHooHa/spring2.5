@@ -1,12 +1,15 @@
 package junit_test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BeanDefinition {
 	private String id;
 	private String classname;
 	private List<ProportyDefinition> proportys = new ArrayList<>();
+	
 	
 	public BeanDefinition() {
 		super();
@@ -48,5 +51,8 @@ public class BeanDefinition {
 	public void setProportys(List<ProportyDefinition> proportys) {
 		this.proportys = proportys;
 	}
+
+
+	
 	
 }

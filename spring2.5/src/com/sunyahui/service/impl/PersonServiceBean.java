@@ -1,6 +1,8 @@
 package com.sunyahui.service.impl;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
@@ -13,7 +15,7 @@ public class PersonServiceBean implements PersonService {
 	private String name;
 	private Set<String> set = new HashSet<>();
 	private Properties properties = new Properties();
-	
+	private Map<String,String> maps = new HashMap<>();
 	
 	public PersonDaoBean getPersonDaoBean() {
 		return personDaoBean;
@@ -60,6 +62,18 @@ public class PersonServiceBean implements PersonService {
 
 	public void setProperties(Properties properties) {
 		this.properties = properties;
+	}
+
+
+
+	public Map<String, String> getMaps() {
+		return maps;
+	}
+
+
+
+	public void setMaps(Map<String, String> maps) {
+		this.maps = maps;
 	}
 
 

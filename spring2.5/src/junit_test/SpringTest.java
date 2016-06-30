@@ -21,6 +21,11 @@ public class SpringTest {
 		for(Object key :personService.getProperties().keySet()){
 			System.out.println(key+"  "+personService.getProperties().getProperty((String)key));
 		}
+		System.out.println("+++++++++Map+++++++");
+		for(Object key :personService.getMaps().keySet()){
+			System.out.println(key+"  "+personService.getMaps().get(key));
+		}
+		context.close();
 	}
-
+	
 }
