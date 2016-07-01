@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">        
+         
+  
 	<!-- 
 	      三种bean实例化方法配置：
 	<bean id="personService2" class="com.sunyahui.service.impl.PersonServiceBeanFactory"
@@ -37,6 +39,7 @@
 	 	<property name="name" value="bob"></property>
 	 </bean>
 	  -->
+	  <!-- 
 	   <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean">
 			<property name="set">
 			<set>
@@ -59,5 +62,13 @@
 				<entry key="key-3" value="value-3"></entry>
 			</map>
 			</property>
-	   </bean>
+	   </bean>-->
+	   
+	 <bean id="personDao" class="com.sunyahui.dao.impl.PersonDaoBean"></bean>
+	 <bean id="personService" class="com.sunyahui.service.impl.PersonServiceBean1">
+	
+	 	<constructor-arg index="0" type="com.sunyahui.dao.PersonDao"  ref="personDao"></constructor-arg>
+	    <constructor-arg index="1"  value="孙雅晖"></constructor-arg> 
+	 </bean>
+	 
 </beans>
